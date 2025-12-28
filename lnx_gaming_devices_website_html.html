@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LNX — игровые девайсы</title>
+  <meta name="description" content="Игровые клавиатуры и мыши LNX для киберспорта и максимальной точности">
+  <link rel="icon" href="/mnt/data/1b18f6a8-97d9-4c8c-ae66-ee875089f67b.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top, #3b0070, #000);
+      color: #fff;
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(216,180,254,0.1),
+        rgba(216,180,254,0.1) 10px,
+        transparent 10px,
+        transparent 20px
+      );
+      filter: blur(25px);
+      z-index: -1;
+      pointer-events: none;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 48px;
+      background: rgba(60,0,100,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200,132,252,0.5);
+    }
+
+    header h1 { font-weight: 800; letter-spacing: 4px; color: #f5d0fe; }
+    nav a { margin-left: 32px; font-size: 14px; color: #e9d5ff; }
+    nav a:hover { color: #f0abfc; }
+
+    .hero {
+      padding: 140px 32px;
+      text-align: center;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.25), transparent);
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 800;
+      margin-bottom: 24px;
+      color: #d8b4fe;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+    }
+
+    .hero p {
+      max-width: 640px;
+      margin: 0 auto 40px;
+      color: #e0c2ff;
+      font-size: 18px;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 16px 36px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #d8b4fe, #9d4edd);
+      color: #fff;
+      font-weight: 600;
+      box-shadow: 0 0 40px rgba(216,180,254,0.7);
+    }
+
+    section { padding: 100px 48px; }
+
+    .title {
+      text-align: center;
+      font-size: 40px;
+      font-weight: 800;
+      margin-bottom: 64px;
+      color: #e0c2ff;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, 270px);
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .card {
+      width: 270px;
+      border: 1px solid rgba(200,132,252,0.5);
+      border-radius: 20px;
+      padding: 32px;
+      background: linear-gradient(180deg, rgba(80,0,130,0.8), rgba(20,0,40,0.9));
+      backdrop-filter: blur(8px);
+      text-align: center;
+      box-shadow: 0 0 50px rgba(216,180,254,0.3);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .card p { text-shadow: 1px 1px 5px rgba(0,0,0,0.6); }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 70px rgba(216,180,254,.6);
+    }
+
+    .card--wide { max-width: 600px; }
+
+    .card h3 { margin-bottom: 12px; color: #f0abfc; }
+    .card p { color: #e0c2ff; font-size: 15px; text-align: justify; margin-bottom: 12px; }
+    .price { font-weight: 700; color: #ffb3c6; margin-bottom: 12px; font-size: 18px; }
+    .buy-btn {
+      display: inline-block;
+      padding: 10px 24px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #f0abfc, #9d4edd);
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .buy-btn:hover { background: linear-gradient(135deg, #d946ef, #7e22ce); }
+
+    .tech-img, .about-img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 16px;
+      box-shadow: 0 0 30px rgba(216,180,254,0.5);
+    }
+
+    .tech-section, .about-section {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .tech-section img, .about-section img {
+      flex: 1 1 300px;
+    }
+
+    .tech-section .card, .about-section p {
+      flex: 1 1 300px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(200,132,252,0.5);
+      padding: 40px;
+      text-align: center;
+      color: #f0abfc;
+    }
+
+    footer a { color: #f0abfc; text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      header { padding: 20px; }
+      nav { display: none; }
+      .hero h1 { font-size: 40px; }
+      .card p, .price { font-size: 14px; }
+      .tech-section, .about-section { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="logo">LNX</span>
+  <nav>
+    <a href="#products">Продукты</a>
+    <a href="#tech">Технологии</a>
+    <a href="#about">О бренде</a>
+    <a href="#contact">Контакты</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>LNX — игровые девайсы нового поколения</h1>
+  <p>Игровые девайсы LNX созданы для киберспорта и максимальной точности в каждой игре.</p>
+  <a href="#products" class="btn">Перейти в каталог</a>
+</section>
+
+<section id="products">
+  <h2 class="title">Линейка девайсов</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>LNX Vio65HE</h3>
+      <p>Клавиатура</p>
+      <p class="price">8999 ₽</p>
+      <a href="https://www.ozon.ru" target="_blank" class="buy-btn">Купить</a>
+    </div>
+    <div class="card">
+      <h3>LNX Wido</h3>
+      <p>Мышь</p>
+      <p class="price">6999 ₽</p>
+      <a href="https://www.ozon.ru" target="_blank" class="buy-btn">Купить</a>
+    </div>
+  </div>
+</section>
+
+<section id="tech" class="tech">
+  <h2 class="title">Технологии LNX</h2>
+  <div class="tech-section">
+    <img src="/mnt/data/1b18f6a8-97d9-4c8c-ae66-ee875089f67b.png" alt="LNX tech image" class="tech-img">
+    <div class="card card--wide">
+      <h3>VoidSwitch</h3>
+      <p>Наша опто-механическая технология сочетает классические механические ощущения с предельно быстрым откликом. Положение пластикового стэма измеряется оптической светопарой напрямую, без контактов и дребезга. Срабатывание происходит со скоростью света, а аналоговое считывание на всём ходе даёт настраиваемую точку активации и максимальную точность.</p>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <h2 class="title">О бренде</h2>
+  <div class="about-section">
+    <img src="https://i.postimg.cc/xTgMxhdv/photo-1550751827-4bd374c3f58b.avif" alt="About LNX" class="about-img">
+    <p style="max-width:700px;color:#e0c2ff;text-align:center;">
+      Компания LNX была основана в 2026 году с одной простой целью: создавать девайсы, которые не просто работают, а даже вдохновляют. Каждая клавиатура и мышь LNX рождаются из страсти к технологиям и внимательности к деталям. Мы верим, что инструмент должен быть частью пользователя, а не отвлекающим фактором.
+    </p>
+  </div>
+</section>
+
+<footer id="contact">
+  <p>LNX_Support@yandex.ru</p>
+  <p>LNX_Marketing@yandex.ru</p>
+  <p>© 2026 LNX Gaming</p>
+  <p><a href="https://t.me/LNX_TECH" target="_blank" rel="noopener noreferrer">Наш Telegram канал</a></p>
+</footer>
+
+</body>
+</html>
